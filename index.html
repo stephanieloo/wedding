@@ -2,11 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-    <meta name="robots" content="noindex, nofollow">
-    <title>Finally Our Turn</title>
-    <!-- Tally Embed Script -->
-    <script async src="https://tally.so/widgets/embed.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thank You | Finally Our Turn</title>
     <style>
         :root {
             /* Chinese-inspired romantic color palette */
@@ -16,22 +13,21 @@
             --gold-color: #cc9933;     /* Matte gold accents */
             --card-bg: #ffffff;
             --border-color: #f3ece4;   /* Soft warm border */
-
-            /* ====================================================
-               EASY ADJUSTMENT SETTINGS FOR FORM CROP & HEIGHT
-               ==================================================== */
-            --form-height: 1100px;      /* Set to cover the entire form height without scrolling */
-            --crop-top: 60px;          /* Pixels to crop off the top (hides title/logo) */
-            --crop-bottom: 60px;       /* Pixels to crop off the bottom (hides Tally footer/branding) */
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { 
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
-            background-color: var(--bg-color); 
-            color: var(--text-color); 
-            line-height: 1.6; 
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
             overflow-x: hidden;
+            position: relative;
         }
 
         /* CSS REALISTIC PETAL LAYER */
@@ -70,141 +66,52 @@
             }
         }
 
-        /* FULLSCREEN LANDING COVER */
-        #landing-screen {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            background-color: transparent; 
-            z-index: 2000; 
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 20px;
-            transition: transform 0.8s cubic-bezier(0.77, 0, 0.175, 1), opacity 0.8s ease;
-        }
-
-        #landing-screen::before {
-            content: "";
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background-color: var(--bg-color);
-            z-index: -1;
-            transition: opacity 0.8s ease;
-        }
-
-        #landing-screen.exit {
-            transform: translateY(-100vh);
-            opacity: 0;
-            pointer-events: none;
-        }
-
-        #landing-screen h1 { 
-            font-weight: 300; 
-            font-size: 3.2rem; 
-            letter-spacing: -1px; 
-            margin-bottom: 10px; 
-            color: var(--accent-color); 
-        }
-        
-        #landing-screen .date { 
-            font-size: 1.1rem; 
-            color: var(--gold-color); 
-            text-transform: uppercase; 
-            letter-spacing: 3px; 
-            margin-bottom: 40px; 
-        }
-
-        /* ANIMATION TRACK */
-        .animation-track {
+        /* THANK YOU CARD CONTAINER */
+        .container {
             position: relative;
-            width: 80%;
-            max-width: 400px;
-            height: 100px; 
-            margin-bottom: 30px;
-            border-bottom: 2px dashed #e2d7cd;
-        }
-
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-6px); }
-            100% { transform: translateY(0px); }
-        }
-
-        @keyframes swimAcrossTrack {
-            0% { left: 0%; transform: scaleX(1); }
-            48% { transform: scaleX(1); }
-            50% { left: 93%; transform: scaleX(-1); }
-            98% { transform: scaleX(-1); }
-            100% { left: 0%; transform: scaleX(1); }
-        }
-
-        @keyframes waveMotion {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-6px); }  
-        }
-
-        .background-duck-swimmer {
-            position: absolute;
-            bottom: 0;
-            margin-bottom: -10px; 
-            width: 25px;        
-            height: 25px;       
-            z-index: 1;
-            user-select: none;
-            pointer-events: none;
-            animation: swimAcrossTrack 32s linear infinite;
-        }
-
-        .background-duck-graphic {
-            width: 100%;
-            height: 100%;
-            background-image: url('duck.png');
-            background-size: contain;
-            background-repeat: no-repeat;
-            background-position: center;
-            position: absolute;
-            opacity: 1.0; 
-            animation: waveMotion 1.1s ease-in-out infinite; 
-        }
-
-        .character {
-            position: absolute;
-            bottom: 18px;
-            width: 90px;  
-            height: 90px;
-            transition: transform 0.5s ease-out; 
-            z-index: 2; 
-        }
-
-        .character img { width: 100%; height: 100%; object-fit: contain; }
-
-        #groom { left: -22%; }
-        #bride { right: -22%; }
-
-        .float-wrap-groom { animation: float 3s ease-in-out infinite; }
-        .float-wrap-bride { animation: float 3s ease-in-out infinite; animation-delay: 1.5s; }
-
-        .countdown-text {
-            font-size: 1.2rem;
-            font-weight: 400;
-            color: var(--text-color);
-            margin-bottom: 50px;
+            z-index: 1001;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 40px 30px;
+            max-width: 450px;
+            width: 90%;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(58, 46, 43, 0.04);
         }
 
         .double-happiness-badge {
             font-size: 2.2rem;
             color: var(--accent-color);
-            margin-bottom: 15px;
+            margin-bottom: 5px;
             line-height: 1;
             opacity: 0.85;
         }
 
-        .enter-btn {
+        h1.names-heading {
+            font-weight: 300;
+            font-size: 2.2rem;
+            margin-bottom: 5px;
+            color: var(--accent-color);
+        }
+
+        .date {
+            color: var(--gold-color);
+            font-size: 1rem;
+            letter-spacing: 2px;
+            font-weight: 500;
+            text-transform: uppercase;
+            margin-bottom: 25px;
+        }
+
+        p {
+            color: var(--text-color);
+            font-size: 1.05rem;
+            margin-bottom: 30px;
+        }
+
+        .btn {
+            display: inline-block;
             background: none;
             border: 1px solid var(--accent-color);
             color: var(--accent-color);
@@ -213,120 +120,15 @@
             letter-spacing: 2px;
             text-transform: uppercase;
             border-radius: 4px;
+            text-decoration: none;
             cursor: pointer;
             transition: all 0.3s ease;
             font-weight: 500;
-            position: relative;
-            z-index: 2001; 
-        }
-        .enter-btn:hover { background-color: var(--accent-color); color: #fff; }
-
-        /* RSVP BUTTON */
-        .rsvp-trigger-container {
-            text-align: center;
-            margin: 30px 0;
         }
 
-        .rsvp-btn {
+        .btn:hover {
             background-color: var(--accent-color);
             color: #ffffff;
-            border: 1px solid var(--accent-color);
-            padding: 14px 40px;
-            font-size: 1rem;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-weight: 600;
-            box-shadow: 0 4px 12px rgba(184, 59, 50, 0.2);
-        }
-
-        .rsvp-btn:hover {
-            background-color: #962f27;
-            border-color: #962f27;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 16px rgba(184, 59, 50, 0.3);
-        }
-
-        /* MAIN CONTENT DETAILS */
-        .main-content {
-            max-width: 600px;
-            margin: 0 auto;
-            padding: 40px 20px 60px;
-            opacity: 0;
-            display: none;
-            transition: opacity 0.5s ease;
-            position: relative;
-            z-index: 1001; 
-        }
-        .main-content.visible { 
-            display: block; 
-            opacity: 1; 
-        }
-        .main-content h2.names-heading { text-align: center; font-weight: 300; font-size: 2.2rem; margin-bottom: 5px; border: none; color: var(--accent-color); }
-
-        section { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 8px; padding: 30px; margin-bottom: 24px; box-shadow: 0 4px 15px rgba(58,46,43,0.02); }
-        h2 { font-weight: 400; font-size: 1.3rem; margin-bottom: 20px; color: var(--accent-color); border-bottom: 1px solid var(--border-color); padding-bottom: 8px; }
-        .timeline-item { margin-bottom: 12px; display: flex; align-items: center; }
-        .time { font-weight: bold; min-width: 80px; color: var(--gold-color); }
-        .details { flex-grow: 1; padding-left: 15px; }
-        .schedule-footer { font-style: italic; color: #7a6e6b; font-size: 0.9rem; margin-top: 18px; padding-top: 12px; border-top: 1px dashed var(--border-color); }
-        a { color: var(--accent-color); text-decoration: underline; }
-        a:hover { color: var(--text-color); }
-
-        /* SEPARATE DEDICATED RSVP PAGE VIEW */
-        #rsvp-page {
-            max-width: 650px;
-            margin: 0 auto;
-            padding: 40px 20px;
-            display: none;
-            opacity: 0;
-            transition: opacity 0.5s ease;
-            position: relative;
-            z-index: 1001;
-        }
-
-        #rsvp-page.visible {
-            display: block;
-            opacity: 1;
-        }
-
-        .back-btn {
-            background: none;
-            border: 1px solid var(--border-color);
-            color: var(--text-color);
-            padding: 8px 18px;
-            font-size: 0.85rem;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            border-radius: 4px;
-            cursor: pointer;
-            margin-bottom: 20px;
-            transition: all 0.3s ease;
-        }
-
-        .back-btn:hover {
-            border-color: var(--accent-color);
-            color: var(--accent-color);
-        }
-
-        /* UNWRAPPED CROPPER WRAPPER */
-        .crop-wrapper {
-            position: relative;
-            width: 100%;
-            height: calc(var(--form-height) - var(--crop-top) - var(--crop-bottom));
-            overflow: hidden;
-        }
-
-        .crop-wrapper iframe {
-            position: absolute;
-            top: calc(-1 * var(--crop-top));
-            left: 0;
-            width: 100% !important;
-            height: var(--form-height) !important;
-            border: none;
-            scrolling: no;
         }
     </style>
 </head>
@@ -334,158 +136,18 @@
 
     <div id="petal-container"></div>
 
-    <div id="landing-screen">
+    <div class="container">
         <div class="double-happiness-badge">囍</div>
-        <h1>Jed & Stephanie</h1>
+        <h1 class="names-heading">Jed & Stephanie</h1>
         <div class="date">March 6, 2027</div>
-        
-        <div class="animation-track">
-            <div class="background-duck-swimmer">
-                <div class="background-duck-graphic"></div>
-            </div>
 
-            <div id="groom" class="character">
-                <div class="float-wrap-groom"><img src="groom.gif" alt="Groom"></div>
-            </div>
-            <div id="bride" class="character">
-                <div class="float-wrap-bride"><img src="bride.gif" alt="Bride"></div>
-            </div>
-        </div>
-        
-        <div id="countdown" class="countdown-text">Calculating days...</div>
+        <p>Your response has been successfully submitted!</p>
 
-        <button class="enter-btn" onclick="enterSite()">Let's Go</button>
-    </div>
-
-    <!-- MAIN DETAILS VIEW -->
-    <div id="details-content" class="main-content">
-        <button class="back-btn" onclick="goToLandingScreen()">← Home</button>
-
-        <div class="double-happiness-badge" style="text-align: center; margin-bottom: 5px;">囍</div>
-        <h2 class="names-heading">Jed & Stephanie</h2>
-        
-        <p style="text-align: center; color: var(--gold-color); font-size: 1rem; letter-spacing: 2px; font-weight: 500; text-transform: uppercase; margin-bottom: 30px;">March 6, 2027</p>
-
-        <!-- RSVP HERE BUTTON -->
-        <div class="rsvp-trigger-container">
-            <button class="rsvp-btn" onclick="goToRSVPPage()">RSVP Here</button>
-        </div>
-
-        <section>
-            <h2>Schedule</h2>
-            <div class="timeline-item">
-                <div class="time">Afternoon</div>
-                <div class="details">Get Married 💍</div>
-            </div>
-            <div class="timeline-item">
-                <div class="time">Evening</div>
-                <div class="details">Reception 🥂</div>
-            </div>
-            <div class="schedule-footer">Details TBD</div>
-        </section>
-    </div>
-
-    <!-- DEDICATED RSVP PAGE VIEW -->
-    <div id="rsvp-page">
-        <button class="back-btn" onclick="goToDetailsPage()">← Back to Details</button>
-        
-        <div class="double-happiness-badge" style="text-align: center; margin-bottom: 5px;">囍</div>
-        <h2 style="text-align: center; border: none; font-weight: 300; font-size: 2rem; margin-bottom: 20px;">RSVP</h2>
-
-        <div class="crop-wrapper">
-            <iframe 
-                id="tally-iframe"
-                src="https://tally.so/r/rj9jVR?transparentBackground=1&hideTitle=1" 
-                width="100%" 
-                frameborder="0" 
-                marginheight="0" 
-                marginwidth="0" 
-                scrolling="no"
-                title="Jed & Stephanie's Wedding RSVP">
-            </iframe>
-        </div>
+        <a href="https://finallyourturn.com/" class="btn">Return Home</a>
     </div>
 
     <script>
-        // --- 1. COUNTDOWN SYSTEM ---
-        function calculateCountdown() {
-            const weddingDate = new Date(2027, 2, 6);  // March 6, 2027
-            const startDate = new Date(2026, 5, 5);    // June 5, 2026
-            const today = new Date();
-            
-            const d1 = Date.UTC(startDate.getFullYear(), startDate.getMonth(), startDate.getDate());
-            const d2 = Date.UTC(today.getFullYear(), today.getMonth(), today.getDate());
-            const d3 = Date.UTC(weddingDate.getFullYear(), weddingDate.getMonth(), weddingDate.getDate());
-
-            const msPerDay = 1000 * 60 * 60 * 24;
-            
-            const totalDurationDays = Math.floor((d3 - d1) / msPerDay);
-            const daysRemaining = Math.floor((d3 - d2) / msPerDay);
-            const daysPassed = Math.floor((d2 - d1) / msPerDay);
-            
-            const countdownElement = document.getElementById('countdown');
-            const bride = document.getElementById('bride');
-            const groom = document.getElementById('groom');
-
-            const maxPixelsToMove = 200; 
-
-            if (daysRemaining > 0) {
-                if (daysRemaining === 1) {
-                    countdownElement.innerText = "1 Day To Go";
-                } else {
-                    countdownElement.innerText = `${daysRemaining} Days To Go`;
-                }
-                
-                let percentTimePassed = daysPassed / totalDurationDays;
-                if (percentTimePassed < 0 || isNaN(percentTimePassed)) percentTimePassed = 0;
-                if (percentTimePassed > 1) percentTimePassed = 1;
-                
-                const pixelMovement = percentTimePassed * maxPixelsToMove;
-
-                groom.style.transform = `translateX(${pixelMovement}px)`;
-                bride.style.transform = `translateX(-${pixelMovement}px)`;
-
-            } else if (daysRemaining === 0) {
-                countdownElement.innerText = "Today is the Day! 🥂";
-                groom.style.transform = `translateX(${maxPixelsToMove}px)`;
-                bride.style.transform = `translateX(-${maxPixelsToMove}px)`;
-            } else {
-                countdownElement.innerText = "We're Married! 🎉";
-                groom.style.transform = `translateX(${maxPixelsToMove}px)`;
-                bride.style.transform = `translateX(-${maxPixelsToMove}px)`;
-            }
-        }
-
-        // --- 2. PAGE NAVIGATION ---
-        function enterSite() {
-            document.getElementById('landing-screen').classList.add('exit');
-            setTimeout(() => {
-                goToDetailsPage();
-            }, 300);
-        }
-
-        function goToLandingScreen() {
-            document.getElementById('details-content').classList.remove('visible');
-            document.getElementById('rsvp-page').classList.remove('visible');
-            document.getElementById('landing-screen').classList.remove('exit');
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-
-        function goToRSVPPage() {
-            document.getElementById('details-content').classList.remove('visible');
-            const rsvpPage = document.getElementById('rsvp-page');
-            rsvpPage.classList.add('visible');
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-
-        function goToDetailsPage() {
-            document.getElementById('rsvp-page').classList.remove('visible');
-            const detailsPage = document.getElementById('details-content');
-            detailsPage.classList.add('visible');
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-
-        // --- 3. CSS-BACKED ORGANIC PETAL GENERATOR ---
+        // CSS-BACKED ORGANIC PETAL GENERATOR
         function spawnPetals() {
             const container = document.getElementById('petal-container');
             const petalCount = 30; 
@@ -509,10 +171,8 @@
             }
         }
 
-        window.addEventListener('DOMContentLoaded', () => {
-            calculateCountdown();
-            spawnPetals();
-        });
+        window.addEventListener('DOMContentLoaded', spawnPetals);
     </script>
+
 </body>
 </html>
